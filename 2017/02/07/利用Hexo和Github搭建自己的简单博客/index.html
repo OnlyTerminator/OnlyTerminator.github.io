@@ -1,0 +1,576 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="申请Github账号这个大家可以自行申请，不会的也可以百度一下，这里也贴上一个百度经验的链接Github的账号申请方法
+Github Pages的使用有了账号以后，首先点击新建仓库，如图：
+然后到达仓库信息填写界面，如图：这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io因为我的已经申请了，没找到截图，所以这个是找的网上的鸿洋老师的截图，他的用户名是hongyangAnd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Hexo和Github搭建自己的简单博客">
+<meta property="og:url" content="http://yoursite.com/2017/02/07/利用Hexo和Github搭建自己的简单博客/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="申请Github账号这个大家可以自行申请，不会的也可以百度一下，这里也贴上一个百度经验的链接Github的账号申请方法
+Github Pages的使用有了账号以后，首先点击新建仓库，如图：
+然后到达仓库信息填写界面，如图：这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io因为我的已经申请了，没找到截图，所以这个是找的网上的鸿洋老师的截图，他的用户名是hongyangAnd">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3004539-f37975c9bb03ad02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3004539-9f7dda1436aff225?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3004539-d03be94ffe5ac04d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-02-07T13:27:40.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Hexo和Github搭建自己的简单博客">
+<meta name="twitter:description" content="申请Github账号这个大家可以自行申请，不会的也可以百度一下，这里也贴上一个百度经验的链接Github的账号申请方法
+Github Pages的使用有了账号以后，首先点击新建仓库，如图：
+然后到达仓库信息填写界面，如图：这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io因为我的已经申请了，没找到截图，所以这个是找的网上的鸿洋老师的截图，他的用户名是hongyangAnd">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3004539-f37975c9bb03ad02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 利用Hexo和Github搭建自己的简单博客 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用Hexo和Github搭建自己的简单博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-02-07T21:27:24+08:00" content="2017-02-07">
+              2017-02-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="申请Github账号"><a href="#申请Github账号" class="headerlink" title="申请Github账号"></a>申请Github账号</h2><p>这个大家可以自行申请，不会的也可以百度一下，这里也贴上一个百度经验的链接<a href="http://jingyan.baidu.com/article/455a9950abe0ada167277864.html" target="_blank" rel="external">Github的账号申请方法</a></p>
+<h2 id="Github-Pages的使用"><a href="#Github-Pages的使用" class="headerlink" title="Github Pages的使用"></a>Github Pages的使用</h2><p>有了账号以后，首先点击新建仓库，如图：<br><img src="http://upload-images.jianshu.io/upload_images/3004539-f37975c9bb03ad02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建项目"></p>
+<p>然后到达仓库信息填写界面，如图：<br><img src="http://upload-images.jianshu.io/upload_images/3004539-9f7dda1436aff225?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写用户名"><br><strong>这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io<br>因为我的已经申请了，没找到截图，所以这个是找的网上的鸿洋老师的截图，他的用户名是hongyangAndroid，所以他的用户名是hongyangAndroid.github.io。</strong></p>
+<h2 id="安装Git客户端"><a href="#安装Git客户端" class="headerlink" title="安装Git客户端"></a>安装Git客户端</h2><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">Git官方下载地址</a><br>大家下载直接安装就行，一直下一步就可以，没什么特殊的，安装完成时候配置一下环境变量。<br><strong>搭建安装完成之后记得打开Git Base Here 配置用户名和邮箱，有些使用SSH我这边没有使用</strong></p>
+<pre><code>git config --global user.name [username]
+git config --global user.email [email]
+</code></pre><h2 id="安装Node（必须）"><a href="#安装Node（必须）" class="headerlink" title="安装Node（必须）"></a>安装Node（必须）</h2><p>作用：用来生成静态页面的<br>到Node.js<a href="https://nodejs.org/" target="_blank" rel="external">官网</a>下载相应平台的最新版本，一路安装即可。</p>
+<h2 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h2><p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
+<h4 id="执行如下命令安装Hexo："><a href="#执行如下命令安装Hexo：" class="headerlink" title="执行如下命令安装Hexo："></a>执行如下命令安装Hexo：</h4><pre><code>npm install -g hexo
+</code></pre><h4 id="初始化然后，执行init命令初始化hexo-命令："><a href="#初始化然后，执行init命令初始化hexo-命令：" class="headerlink" title="初始化然后，执行init命令初始化hexo,命令："></a>初始化然后，执行init命令初始化hexo,命令：</h4><pre><code>hexo init
+</code></pre><p>好啦，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行。</p>
+<h4 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h4><pre><code>hexo generate（hexo g也可以）
+</code></pre><h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><p>启动本地服务，进行文章预览调试，命令：</p>
+<pre><code>hexo server
+</code></pre><p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
+<p>我不知道你们能不能，反正我不能，一直打不开，不管他，我们直接配置到Github上。</p>
+<h4 id="Hexo和Github相结合"><a href="#Hexo和Github相结合" class="headerlink" title="Hexo和Github相结合"></a>Hexo和Github相结合</h4><p>在我们刚刚建立的blog的目录下面<strong>_config.yml</strong>的文件,打开之后,最下面配置Github</p>
+<pre><code>deploy:
+  type: git
+  repo: https://github.com/OnlyTerminator/OnlyTerminator.github.io
+  branch: master
+</code></pre><p>然后执行命令：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>最后啦，执行配置命令：</p>
+<pre><code>hexo deploy
+</code></pre><p><strong>这一块可能要输入用户名和密码</strong><br>完成之后再浏览器中输入<a href="https://onlyterminator.github.io/" target="_blank" rel="external">https://onlyterminator.github.io/</a>就行了，我的github的账户叫onlyterminator,你们把这个改成你自己的github账户名就行了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3004539-d03be94ffe5ac04d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大致看一下效果"></p>
+<h4 id="后期更新博客"><a href="#后期更新博客" class="headerlink" title="后期更新博客"></a>后期更新博客</h4><p>后期我们想要添加博客。只要在blog目录下面的source_posts下面添加.md文件就行，我们也可以通过命令来新建，位置也在source_posts下面</p>
+<pre><code>hexo new&quot;postName&quot; #新建文章
+</code></pre><p>然后执行下面的命令部署到Github上：</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/06/Android自定义Log库/" rel="next" title="Android自定义Log库">
+                <i class="fa fa-chevron-left"></i> Android自定义Log库
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#申请Github账号"><span class="nav-number">1.</span> <span class="nav-text">申请Github账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Pages的使用"><span class="nav-number">2.</span> <span class="nav-text">Github Pages的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git客户端"><span class="nav-number">3.</span> <span class="nav-text">安装Git客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node（必须）"><span class="nav-number">4.</span> <span class="nav-text">安装Node（必须）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正式安装Hexo"><span class="nav-number">5.</span> <span class="nav-text">正式安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行如下命令安装Hexo："><span class="nav-number">5.0.1.</span> <span class="nav-text">执行如下命令安装Hexo：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化然后，执行init命令初始化hexo-命令："><span class="nav-number">5.0.2.</span> <span class="nav-text">初始化然后，执行init命令初始化hexo,命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成静态页面"><span class="nav-number">5.0.3.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地启动"><span class="nav-number">5.0.4.</span> <span class="nav-text">本地启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo和Github相结合"><span class="nav-number">5.0.5.</span> <span class="nav-text">Hexo和Github相结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后期更新博客"><span class="nav-number">5.0.6.</span> <span class="nav-text">后期更新博客</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

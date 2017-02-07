@@ -1,0 +1,633 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Markdown?是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。
+使用 Markdown 的优点专注你的文字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法简单解析">
+<meta property="og:url" content="http://yoursite.com/2017/02/06/markdown/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Markdown?是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。
+使用 Markdown 的优点专注你的文字">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3004539-703d7cc6886ca745.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-02-07T11:42:41.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown语法简单解析">
+<meta name="twitter:description" content="Markdown?是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。
+使用 Markdown 的优点专注你的文字">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3004539-703d7cc6886ca745.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Markdown语法简单解析 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Markdown语法简单解析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-02-06T18:05:51+08:00" content="2017-02-06">
+              2017-02-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown</a>?是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
+<h2 id="使用-Markdown-的优点"><a href="#使用-Markdown-的优点" class="headerlink" title="使用 Markdown 的优点"></a>使用 Markdown 的优点</h2><p>专注你的文字内容而不是排版样式。<br>轻松的导出 HTML、PDF 和本身的 .md 文件。<br>纯文本内容，兼容所有的文本编辑器与字处理软件。<br>可读，直观。适合所有人的写作语言。</p>
+<p>好了，我们直接步入正题吧，来讲解一下Markdown常用的集中语法：</p>
+<h2 id="1、标题"><a href="#1、标题" class="headerlink" title="1、标题"></a>1、标题</h2><p>标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加?#?号即可。</p>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+</code></pre><p>以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。</p>
+<h2 id="2、列表"><a href="#2、列表" class="headerlink" title="2、列表"></a>2、列表</h2><p>我是一个程序员，所以在平时写一些文章的时候不太用到列表，但是它的语法也很简单，熟悉 HTML 的同学肯定知道有序列表与无序列表的区别。<br>在 Markdown 下，列表的显示只需要在文字前加上?-?或?*<br>?即可变为无序列表，有序列表则直接在文字前加?1.?2. 3. 符号要和文字之间加上一个字符的空格。</p>
+<p>无序列表：</p>
+<pre><code>* 入门详解
+* 我是语法
+</code></pre><ul>
+<li>入门详解</li>
+<li>我是语法</li>
+</ul>
+<p>有序列表：</p>
+<pre><code>1. 测试一下看看
+2. 我是有序列表
+</code></pre><ol>
+<li>测试一下看看</li>
+<li>我是有序列表</li>
+</ol>
+<h2 id="3、引用"><a href="#3、引用" class="headerlink" title="3、引用"></a>3、引用</h2><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。</p>
+<pre><code>&gt;例如这样
+</code></pre><blockquote>
+<p>例如这样</p>
+</blockquote>
+<p>只需要在文本前加入?&gt;?这种尖括号（大于号）即可</p>
+<h2 id="3、图片与链接"><a href="#3、图片与链接" class="headerlink" title="3、图片与链接"></a>3、图片与链接</h2><p>插入链接与插入图片的语法很像，区别在一个?!号，插入链接的方法 [要显示的文字]（实际的链接地址）</p>
+<pre><code>[百度](http://baidu.com)
+</code></pre><p> <a href="http://baidu.com" target="_blank" rel="external">百度</a><br>插入图片的实现方法！[要显示的文字]（实际的链接地址）</p>
+<pre><code>![百度的一张图片](http://upload-images.jianshu.io/upload_images/3004539-703d7cc6886ca745.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/3004539-703d7cc6886ca745.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百度的一张图片"></p>
+<h2 id="4、粗体与斜体"><a href="#4、粗体与斜体" class="headerlink" title="4、粗体与斜体"></a>4、粗体与斜体</h2><p>Markdown 的粗体和斜体也非常简单</p>
+<pre><code>用两个*包含一段文本就是粗体的语法，
+用一个 * 包含一段文本就是斜体的语法。
+</code></pre><p>下面看一个例子：</p>
+<pre><code>**这里是粗体**
+</code></pre><p><strong>这里是粗体</strong></p>
+<pre><code>?*这里是斜体*
+</code></pre><p><em>这里是斜体</em></p>
+<h2 id="5、表格"><a href="#5、表格" class="headerlink" title="5、表格"></a>5、表格</h2><p>表格是我觉得 Markdown 比较累人的地方，所以我很少用，实在是蛋疼，例子如下：</p>
+<pre><code>| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</code></pre><p>这种语法生成的表格如下：</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6、代码框"><a href="#6、代码框" class="headerlink" title="6、代码框"></a>6、代码框</h2><p>对于我们这样的程序猿来说，这才是重点，如果你也跟我一样，是程序员，那你就可以用下面的方法来让自己的代码片段优雅的展示在文章里面，用一个`来包含你的代码片段 是键盘上那个 ~ 噢，不是’号，使用?tab?键即可缩进。<br>我们看一个例子：</p>
+<pre><code>`public void test(){
+    System.out.println(&quot;hello world!&quot;);
+}`
+</code></pre><p><code>public void test(){
+    System.out.println(&quot;hello world!&quot;);
+}</code></p>
+<h2 id="7、分割线"><a href="#7、分割线" class="headerlink" title="7、分割线"></a>7、分割线</h2><pre><code>分割线的语法只需要另起一行，连续输入三个星号?***即可。
+</code></pre><p>老样子，我们还是来举一个栗子：</p>
+<pre><code>到这里，我们的语法讲解快结束了
+***
+有问题大家一起交流啊！
+</code></pre><p>到这里，我们的语法讲解快结束了</p>
+<hr>
+<p>有问题大家一起交流啊！</p>
+<p>##8、小结<br>我也只是刚刚接触这种语法，想写一些东西记录一下，也给正在学习的朋友们做一下参考，大家有其他常用的语法可以给我留言，我会及时的补充到文章里面，谢谢大家！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/06/java反射的简单使用/" rel="next" title="java反射的简单使用">
+                <i class="fa fa-chevron-left"></i> java反射的简单使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/06/Android自定义Log库/" rel="prev" title="Android自定义Log库">
+                Android自定义Log库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Markdown-的优点"><span class="nav-number">1.</span> <span class="nav-text">使用 Markdown 的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、标题"><span class="nav-number">2.</span> <span class="nav-text">1、标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、列表"><span class="nav-number">3.</span> <span class="nav-text">2、列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、引用"><span class="nav-number">4.</span> <span class="nav-text">3、引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、图片与链接"><span class="nav-number">5.</span> <span class="nav-text">3、图片与链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、粗体与斜体"><span class="nav-number">6.</span> <span class="nav-text">4、粗体与斜体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、表格"><span class="nav-number">7.</span> <span class="nav-text">5、表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、代码框"><span class="nav-number">8.</span> <span class="nav-text">6、代码框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、分割线"><span class="nav-number">9.</span> <span class="nav-text">7、分割线</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
