@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,75 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-利用Hexo和Github搭建自己的简单博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/07/利用Hexo和Github搭建自己的简单博客/" class="article-date">
+  <time datetime="2017-02-07T13:27:24.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/07/利用Hexo和Github搭建自己的简单博客/">利用Hexo和Github搭建自己的简单博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="申请Github账号"><a href="#申请Github账号" class="headerlink" title="申请Github账号"></a>申请Github账号</h2><p>这个大家可以自行申请，不会的也可以百度一下，这里也贴上一个百度经验的链接<a href="http://jingyan.baidu.com/article/455a9950abe0ada167277864.html" target="_blank" rel="external">Github的账号申请方法</a></p>
+<h2 id="Github-Pages的使用"><a href="#Github-Pages的使用" class="headerlink" title="Github Pages的使用"></a>Github Pages的使用</h2><p>有了账号以后，首先点击新建仓库，如图：<br><img src="http://upload-images.jianshu.io/upload_images/3004539-f37975c9bb03ad02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建项目"></p>
+<p>然后到达仓库信息填写界面，如图：<br><img src="http://upload-images.jianshu.io/upload_images/3004539-9f7dda1436aff225?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写用户名"><br><strong>这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io<br>因为我的已经申请了，没找到截图，所以这个是找的网上的鸿洋老师的截图，他的用户名是hongyangAndroid，所以他的用户名是hongyangAndroid.github.io。</strong></p>
+<h2 id="安装Git客户端"><a href="#安装Git客户端" class="headerlink" title="安装Git客户端"></a>安装Git客户端</h2><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">Git官方下载地址</a><br>大家下载直接安装就行，一直下一步就可以，没什么特殊的，安装完成时候配置一下环境变量。<br><strong>搭建安装完成之后记得打开Git Base Here 配置用户名和邮箱，有些使用SSH我这边没有使用</strong></p>
+<pre><code>git config --global user.name [username]
+git config --global user.email [email]
+</code></pre><h2 id="安装Node（必须）"><a href="#安装Node（必须）" class="headerlink" title="安装Node（必须）"></a>安装Node（必须）</h2><p>作用：用来生成静态页面的<br>到Node.js<a href="https://nodejs.org/" target="_blank" rel="external">官网</a>下载相应平台的最新版本，一路安装即可。</p>
+<h2 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h2><p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
+<h4 id="执行如下命令安装Hexo："><a href="#执行如下命令安装Hexo：" class="headerlink" title="执行如下命令安装Hexo："></a>执行如下命令安装Hexo：</h4><pre><code>npm install -g hexo
+</code></pre><h4 id="初始化然后，执行init命令初始化hexo-命令："><a href="#初始化然后，执行init命令初始化hexo-命令：" class="headerlink" title="初始化然后，执行init命令初始化hexo,命令："></a>初始化然后，执行init命令初始化hexo,命令：</h4><pre><code>hexo init
+</code></pre><p>好啦，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行。</p>
+<h4 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h4><pre><code>hexo generate（hexo g也可以）
+</code></pre><h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><p>启动本地服务，进行文章预览调试，命令：</p>
+<pre><code>hexo server
+</code></pre><p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
+<p>我不知道你们能不能，反正我不能，一直打不开，不管他，我们直接配置到Github上。</p>
+<h4 id="Hexo和Github相结合"><a href="#Hexo和Github相结合" class="headerlink" title="Hexo和Github相结合"></a>Hexo和Github相结合</h4><p>在我们刚刚建立的blog的目录下面<strong>_config.yml</strong>的文件,打开之后,最下面配置Github</p>
+<pre><code>deploy:
+  type: git
+  repo: https://github.com/OnlyTerminator/OnlyTerminator.github.io
+  branch: master
+</code></pre><p>然后执行命令：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>最后啦，执行配置命令：</p>
+<pre><code>hexo deploy
+</code></pre><p><strong>这一块可能要输入用户名和密码</strong><br>完成之后再浏览器中输入<a href="https://onlyterminator.github.io/" target="_blank" rel="external">https://onlyterminator.github.io/</a>就行了，我的github的账户叫onlyterminator,你们把这个改成你自己的github账户名就行了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3004539-d03be94ffe5ac04d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大致看一下效果"></p>
+<h4 id="后期更新博客"><a href="#后期更新博客" class="headerlink" title="后期更新博客"></a>后期更新博客</h4><p>后期我们想要添加博客。只要在blog目录下面的source_posts下面添加.md文件就行，我们也可以通过命令来新建，位置也在source_posts下面</p>
+<pre><code>hexo new&quot;postName&quot; #新建文章
+</code></pre><p>然后执行下面的命令部署到Github上：</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/07/利用Hexo和Github搭建自己的简单博客/" data-id="ciyvkaif20004y0nlj8t1db2e" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Android自定义Log库" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -102,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/06/Android自定义Log库/" data-id="ciyvgjzeh000058nlwjeyrhdx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/06/Android自定义Log库/" data-id="ciyvkaiei0000y0nlvnf3fr76" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -229,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/06/markdown/" data-id="ciyvgjzeu000358nl6jfmmlzk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/06/markdown/" data-id="ciyvkaiez0003y0nlvst692f5" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -275,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/06/java反射的简单使用/" data-id="ciyvgjzes000258nlu4ceo9ln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/06/java反射的简单使用/" data-id="ciyvkaieu0002y0nl2jwq4n00" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -320,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/06/hello-world/" data-id="ciyvgjzeo000158nlaphs0nc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/06/hello-world/" data-id="ciyvkaieq0001y0nljdpm7d8w" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -345,7 +414,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
@@ -355,9 +424,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/07/利用Hexo和Github搭建自己的简单博客/">利用Hexo和Github搭建自己的简单博客</a>
+          </li>
         
           <li>
             <a href="/2017/02/06/Android自定义Log库/">Android自定义Log库</a>
