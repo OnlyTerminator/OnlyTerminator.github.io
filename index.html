@@ -156,6 +156,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android多线程下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/12/Android多线程下载/">Android多线程下载</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/12/Android多线程下载/" class="archive-article-date">
+  	<time datetime="2017-02-12T03:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>万事都有两面性，多线程下载也是，那么多线程下载的优点是什么呢？归根结底还是多线程的优点，这里我们暂且不去讨论它的利弊，只是讲解一下思想和实现方案。</p>
+<h2 id="实现分析"><a href="#实现分析" class="headerlink" title="实现分析"></a>实现分析</h2><p>我们用五个why的思想来分析一下这个问题：</p>
+<ol>
+<li>怎么实现多线程下载？<br>将下载逻辑在多个线程中同时运行。</li>
+<li>怎么让每个线程下载对应的文件？<br>将文件拆分成线程数对应的分数，进行分配。</li>
+<li>怎么拆分文件？<br>获取文件的长度，再按照线程数进行按比例分配。</li>
+<li>怎么获取文件长度？<br>利用HttpURLConnection的方法来获取内容长度</li>
+<li>下载完成之后怎么办？<br>各个线程都下载完成之后利用RandomAccessFile进行文件合并</li>
+</ol>
+<p>好了，分析到这我们感觉已经可以实现了，我们再重新梳理一下逻辑，大概是，设定线程的数量，按照线程数量来分割要下载的文件，启动多个线程进行下载，最后合成一个文件。OK，撸起袖子就是干！</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>1、设置线程数，我这边是默认指定了三个，大家也可以通过服务器配置啊，或者某些算法来计算需要的线程数，根据实际情况来定。<br>2、获取文件长度：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">URL url = <span class="keyword">new</span> URL(file.url);</div><div class="line">HttpURLConnection con = (HttpURLConnection)</div><div class="line">url.openConnection();</div><div class="line">con.setRequestMethod(<span class="string">"GET"</span>);</div><div class="line">con.setConnectTimeout(<span class="number">5000</span>);</div><div class="line"><span class="keyword">if</span>(con.getResponseCode() ==  HttpURLConnection.HTTP_OK) &#123;</div><div class="line">  <span class="keyword">int</span> len = con.getContentLength(); <span class="comment">//文件的总长度</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样我们就获取到了文件的长度，然后就可以分割下载了，当然之前我们要初始化一些路径啊，RandomAccessFile什么的，大家可以下载源码查看。<br>3、分割文件内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">List&lt;ThreadInfo&gt; threadInfoList = <span class="keyword">new</span> LinkedList&lt;ThreadInfo&gt;(); <span class="comment">//建立线程信息列表</span></div><div class="line">    <span class="keyword">int</span> block = mDownloadInfo.lenght/mThreadCount; <span class="comment">//将下载文件分段</span></div><div class="line">    <span class="keyword">if</span>(block &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//start 根据线程数量分别建立线程信息</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; mThreadCount;i++) &#123;</div><div class="line">            ThreadInfo info = <span class="keyword">new</span> ThreadInfo(i,mDownloadInfo.url,i*block,(i+<span class="number">1</span>)*block-<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">            <span class="keyword">if</span>(i == mThreadCount -<span class="number">1</span>) &#123;</div><div class="line">                info.end = mDownloadInfo.lenght; <span class="comment">//分段最后一个，结束位置到文件总长度末尾</span></div><div class="line">            &#125;</div><div class="line">            threadInfoList.add(info);         <span class="comment">//加入列表</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//end 根据线程数量分别建立线程信息</span></div></pre></td></tr></table></figure></p>
+<p>4、启动下载线程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//start 启动下载线程</span></div><div class="line"><span class="keyword">for</span>(ThreadInfo info : threadInfoList) &#123;</div><div class="line">    DownloadThread thread = <span class="keyword">new</span> DownloadThread(info,mDownloadInfo,mTotalFinished);</div><div class="line">    <span class="keyword">if</span>(!mThreadPool.isShutdown()) &#123;</div><div class="line">        mThreadPool.execute(thread);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>5、下载的逻辑和RandomAccessFile最后生成一个完整的文件：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    URL url = <span class="keyword">null</span>;</div><div class="line">    HttpURLConnection con = <span class="keyword">null</span>;      <span class="comment">//http链接</span></div><div class="line">    RandomAccessFile accessFile = <span class="keyword">null</span>; <span class="comment">//下载文件</span></div><div class="line">    InputStream inputStream = <span class="keyword">null</span>;      <span class="comment">//输入流</span></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> start = threadInfo.start+threadInfo.finished; <span class="comment">//读取文件的位置</span></div><div class="line">        <span class="comment">//start 初始化下载链接</span></div><div class="line">        url = <span class="keyword">new</span> URL(threadInfo.url);</div><div class="line">        con = (HttpURLConnection) url.openConnection();</div><div class="line">        con.setRequestMethod(<span class="string">"GET"</span>);</div><div class="line">        con.setConnectTimeout(<span class="number">5000</span>);</div><div class="line">        con.setRequestProperty(<span class="string">"Range"</span>, <span class="string">"bytes="</span> + start + <span class="string">"-"</span> + threadInfo.end); <span class="comment">//设置读取文件的位置，和结束位置</span></div><div class="line">        <span class="comment">//end 初始化下载链接</span></div><div class="line">        <span class="comment">//start 初始化下载到本地的文件</span></div><div class="line">        accessFile  = <span class="keyword">new</span> RandomAccessFile(<span class="keyword">new</span> File(downloadInfo.filePath, downloadInfo.fileName),<span class="string">"rwd"</span>);</div><div class="line">        accessFile.seek(start);    <span class="comment">//设置开始写入的位置</span></div><div class="line">        <span class="comment">//end 初始化下载到本地的文件</span></div><div class="line"></div><div class="line">        <span class="keyword">int</span> responseCode = con.getResponseCode();</div><div class="line">        <span class="keyword">if</span>((con.getResponseCode() == HttpURLConnection.HTTP_PARTIAL) ||</div><div class="line">                (con.getResponseCode() == HttpURLConnection.HTTP_OK) ) &#123;</div><div class="line">            inputStream = con.getInputStream();</div><div class="line">            <span class="keyword">int</span> finished = threadInfo.finished;               <span class="comment">//已经下载的长度</span></div><div class="line">            <span class="keyword">int</span> readLen = -<span class="number">1</span>;                                       <span class="comment">//读取的长度</span></div><div class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>*<span class="number">4</span>];</div><div class="line">            <span class="keyword">long</span> time = System.currentTimeMillis();</div><div class="line"></div><div class="line">            <span class="comment">//start 读取输入流写入文件</span></div><div class="line">            <span class="keyword">while</span>((readLen = inputStream.read(buffer))!=-<span class="number">1</span>) &#123;</div><div class="line">                accessFile.write(buffer, <span class="number">0</span>, readLen);</div><div class="line">             );</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125; <span class="keyword">catch</span> (ProtocolException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;<span class="keyword">finally</span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span>(inputStream!=<span class="keyword">null</span>)&#123;</div><div class="line">                inputStream.close();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(accessFile!=<span class="keyword">null</span>) &#123;</div><div class="line">                accessFile.close();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">null</span>!=con) &#123;</div><div class="line">                con.disconnect();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">super</span>.run();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>好了，主要下载逻辑就是这样，大家想看完整代码的可以点击下面的链接，希望大家可以喜欢，谢谢！<br><a href="https://github.com/OnlyTerminator/MultithreadingDownload" target="_blank" rel="external">源码下载</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/12/Android多线程下载/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-利用Hexo和Github搭建自己的简单博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -217,6 +293,17 @@ hexo deploy
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">util</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,6 +369,17 @@ hexo deploy
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">util</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -423,6 +521,17 @@ hexo deploy
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">util</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -483,6 +592,17 @@ hexo deploy
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -651,6 +771,18 @@ hexo deploy
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">util</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
